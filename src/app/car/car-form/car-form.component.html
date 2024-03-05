@@ -1,0 +1,29 @@
+<div>
+  <h2>Cadastro Carro</h2>
+
+  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+
+    <div class="row d-grid gap-3">
+      <div class="form-group">
+        <label for="licensePlate">License Plate:</label>
+        <input type="text" formControlName="licensePlate" class="form-control" id="licensePlate">
+      </div>
+      <div class="form-group">
+        <label for="year">Ano:</label>
+        <input type="number" formControlName="year" class="form-control" id="year">
+      </div>
+      <div class="form-group">
+        <label for="model">Modelo:</label>
+        <input type="text" formControlName="model" class="form-control" id="model">
+      </div>
+      <div class="form-group">
+        <label for="color">Cor:</label>
+        <input type="text" formControlName="color" class="form-control" id="color">
+      </div>
+    </div>
+    <div class="float-right" style="margin-top: 10px;" >
+      <button type="submit" class="btn btn-primary" [disabled]="!carForm.valid ">Salvar</button>
+      <button type="button" class="btn btn-secondary" (click)="onVoltar()">Voltar</button>
+    </div>
+  </form>
+</div>

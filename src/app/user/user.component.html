@@ -1,0 +1,48 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="float-left">
+      <h4>Usuários</h4>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-primary" [routerLink]="['../user/userform']">Novo Usuário</button>
+      <!-- <button type="button" class="btn btn-secondary" (click)="onRefresh()">Atualizar</button> -->
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="(users$ | async) as users; else loading">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(user.id)">
+                Atualizar
+              </button>
+
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(user)">
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loading>
+      <span>Carregando Users...</span>
+    </ng-template>
+  </div>
+</div>
+
