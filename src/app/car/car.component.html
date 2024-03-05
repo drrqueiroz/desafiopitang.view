@@ -1,0 +1,50 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="float-left">
+      <h4>Usuários</h4>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-primary" [routerLink]="['../car/carform']">Novo Car</button>
+      <!-- <button type="button" class="btn btn-secondary" (click)="onRefresh()">Atualizar</button> -->
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="(cars$ | async) as cars; else loading">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>LicensePlate</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Color</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars">
+          <td>{{ car.id }}</td>
+          <td>{{ car.licensePlate }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.year }}</td>
+          <td>{{ car.color }}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(car.id)">
+                Atualizar
+              </button>
+
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(car)">
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loading>
+      <span>Carregando Cars...</span>
+    </ng-template>
+  </div>
+</div>
+
