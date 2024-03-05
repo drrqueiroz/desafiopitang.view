@@ -1,0 +1,43 @@
+<div>
+  <h2>Cadastro Usuário</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div class="row d-grid gap-3">
+      <div class="form-group">
+        <label for="firstName">Nome:</label>
+        <input type="text" formControlName="firstName" class="form-control" id="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Sobrenome:</label>
+        <input type="text" formControlName="lastName" class="form-control" id="lastName">
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" formControlName="email" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+        <label for="birthday">Data de Nascimento:</label>
+        <input type="date" formControlName="birthday" class="form-control" id="birthday">
+      </div>
+      <div class="form-group" *ngIf="!isUpdate">
+        <label for="login">Login:</label>
+        <input type="text" formControlName="login" class="form-control" id="login">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha:</label>
+        <input type="password" formControlName="password" class="form-control" id="password" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Telefone:</label>
+        <input type="tel" formControlName="phone" class="form-control" id="phone">
+      </div>
+    </div>
+    <div class="float-right" style="margin-top: 10px;" >
+      <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid ">Salvar</button>
+      <button type="button" class="btn btn-secondary" (click)="onVoltar()">Voltar</button>
+    </div>
+  </form>
+</div>
